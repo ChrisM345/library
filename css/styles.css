@@ -62,3 +62,23 @@ button{
 .title, .pages, .read{
     border-top: black solid;
 }
+
+dialog{
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+.form-row{
+    font-size: 1.2rem;
+    padding-top: 5px;
+}
+
+input{
+    outline: none;
+    border: solid lightgray 2px;
+    padding: 10px;
+    width: 250px;
+}
