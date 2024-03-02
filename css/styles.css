@@ -1,0 +1,38 @@
+html{
+    background-color: lightgray;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    background-color: lightgray;
+    height: 100vh;
+}
+
+.header-container{
+    background-color: white;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-color: white;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding: 25px;
+}
+
+h3, button{
+    color: black;
+}
+
+h3{
+    font-size: 2rem;
+}
+button{
+    padding: 15px;
+}
