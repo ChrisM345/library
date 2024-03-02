@@ -7,8 +7,11 @@ function Book(author, title, pages, read) {
     this.read = read
 }
 
-function addBookToLibrary(){
-
+function addBookToLibrary(author, title, pages, read){
+    let newBook = new Book(author, title, pages, read);
+    myLibrary.push(newBook);
+    bookSection.innerHTML = "";
+    displayBooks();
 }
 
 function displayBooks(){
@@ -44,7 +47,8 @@ function displayBooks(){
 const bookSection = document.querySelector(".book-container")
 const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
-const closeButton = document.querySelector("dialog button");
+const closeButton = document.querySelector(".close");
+const btnSubmit = document.querySelector(".btnSubmit");
 
 showButton.addEventListener("click", () => {
     dialog.showModal();
@@ -53,3 +57,12 @@ showButton.addEventListener("click", () => {
 closeButton.addEventListener("click", () => {
     dialog.close();
 });
+
+btnSubmit.addEventListener("click", (event) => {
+    event.preventDefault();
+    const author = document.querySelector("#author").value;
+    const title = document.querySelector("#title").value
+    const pages = document.querySelector("#pages").value;
+    const read = document.querySelector("#read").checked;
+    if (author && title && pages) addBookToLibrary(author, title, pages, read);
+})
