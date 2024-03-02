@@ -51,3 +51,14 @@ button{
     width: 150px;
     border: solid purple;
 }
+
+.author{
+    overflow-wrap: break-word;
+}
+
+.author, .title, .pages, .read{
+    padding: 2px;
+}
+.title, .pages, .read{
+    border-top: black solid;
+}
