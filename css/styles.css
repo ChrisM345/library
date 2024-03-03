@@ -75,7 +75,7 @@ button{
     
 }
 
-.author, title{
+.author, .title{
     overflow-wrap: break-word;
 }
 

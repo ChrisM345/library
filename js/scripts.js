@@ -23,8 +23,8 @@ Book.prototype.toggleReadStatus = function(){
     displayBooks();
 }
 
-myLibrary.push(new Book('test1test1test1test1test1test1test1', 'titleTest1', 450,'Yes'))
-myLibrary.push(new Book('test2', 'titleTest2', 450,'No'))
+myLibrary.push(new Book('test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1', 'titleTest1', 450,'Yes'))
+myLibrary.push(new Book('test2', 'titleTest2test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1test1', 450,'No'))
 myLibrary.push(new Book('test3', 'titleTest3', 450,'Yes'))
 myLibrary.push(new Book('test3', 'titleTest3', 450,'Yes'))
 myLibrary.push(new Book('test3', 'titleTest3', 450,'Yes'))
