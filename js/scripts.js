@@ -1,4 +1,4 @@
-const myLibrary = [{author: 'test1test1test1test1test1test1test1', title: 'titleTest1', pages: 450, read: 'Yes', idx: 0}, {author: 'test2', title: 'titleTest2', pages: 450, read: "No", idx: 1}, {author: 'test3', title: 'titleTest3', pages: 450, read: "yes", idx: 2}];
+const myLibrary = [];
 
 // Book Object includes basic information + index for removing books from library
 function Book(author, title, pages, read, idx) {
@@ -15,8 +15,18 @@ function Book(author, title, pages, read, idx) {
 }
 
 Book.prototype.toggleReadStatus = function(){
-    console.log("changing status")
+    if (this.read == 'Yes') {
+        this.read = "No"
+    } else {
+        this.read = "Yes"
+    }
+    displayBooks();
 }
+
+myLibrary.push(new Book('test1test1test1test1test1test1test1', 'titleTest1', 450,'Yes'))
+myLibrary.push(new Book('test2', 'titleTest2', 450,'No'))
+myLibrary.push(new Book('test3', 'titleTest3', 450,'Yes'))
+
 
 // Create a new Book and add it to the library. The index for the new book is the length of the library
 function addBookToLibrary(author, title, pages, read){
@@ -61,9 +71,19 @@ function displayBooks(){
         pages.className = "pages";
         pages.innerText = `${book.pages}`;
         
+        const readSection = document.createElement("div");
+        readSection.className = "readSection";
+
         const read = document.createElement("p");
         read.className = "read";
         read.innerText = `Read: ${book.read}`;
+
+        const readToggle = document.createElement("button");
+        readToggle.className = "readToggle";
+        readToggle.innerText = `Toggle Status`;
+
+        readSection.append(read);
+        readSection.append(readToggle);
 
         const delBook = document.createElement("button");
         delBook.className = "delete-book";
@@ -73,12 +93,15 @@ function displayBooks(){
             removeBook(book.idx)
         })
 
+        readToggle.addEventListener("click", () => {
+            book.toggleReadStatus();
+        })
+
         card.append(author);
         card.append(title);
         card.append(pages);
-        card.append(read);
+        card.append(readSection);
         card.append(delBook);
-        // console.log(book.title)
         bookSection.append(card);
     })
 }
