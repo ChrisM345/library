@@ -1,20 +1,50 @@
-const myLibrary = [{author: 'test1test1test1test1test1test1test1', title: 'titleTest1', pages: 450, read: true}, {author: 'test2', title: 'titleTest2', pages: 450, read: true}, {author: 'test3', title: 'titleTest3', pages: 450, read: true}];
+const myLibrary = [{author: 'test1test1test1test1test1test1test1', title: 'titleTest1', pages: 450, read: 'Yes', idx: 0}, {author: 'test2', title: 'titleTest2', pages: 450, read: "No", idx: 1}, {author: 'test3', title: 'titleTest3', pages: 450, read: "yes", idx: 2}];
 
-function Book(author, title, pages, read) {
+// Book Object includes basic information + index for removing books from library
+function Book(author, title, pages, read, idx) {
     this.author = author;
     this.title = title;
     this.pages = pages;
-    this.read = read
+    if (read){
+        this.read = 'Yes';
+    }
+    else{
+        this.read = 'No'
+    }
+    this.idx = myLibrary.length;
 }
 
-function addBookToLibrary(author, title, pages, read){
-    let newBook = new Book(author, title, pages, read);
-    myLibrary.push(newBook);
-    bookSection.innerHTML = "";
-    displayBooks();
+Book.prototype.toggleReadStatus = function(){
+    console.log("changing status")
 }
+
+// Create a new Book and add it to the library. The index for the new book is the length of the library
+function addBookToLibrary(author, title, pages, read){
+    let newBook = new Book(author, title, pages, read, myLibrary.length);
+    console.log(myLibrary.length)
+    myLibrary.push(newBook);
+    displayBooks();
+    dialog.close();
+}
+
+function removeBook(idx){
+    console.log("delete!")
+    console.log(idx)
+    // splice to remove and update indexes
+    myLibrary.splice(idx, 1);
+
+    // Go through the library and update book.idx values
+    myLibrary.forEach((book, i) => {
+        book.idx = i
+    });
+    console.log(myLibrary)
+    displayBooks();
+
+}
+
 
 function displayBooks(){
+    bookSection.innerHTML = ""
     myLibrary.forEach((book) => {
         const card = document.createElement("div");
         card.className = "book";
@@ -33,12 +63,21 @@ function displayBooks(){
         
         const read = document.createElement("p");
         read.className = "read";
-        read.innerText = `${book.read}`;
+        read.innerText = `Read: ${book.read}`;
+
+        const delBook = document.createElement("button");
+        delBook.className = "delete-book";
+        delBook.innerText = `Remove Book`;
+
+        delBook.addEventListener("click", () => {
+            removeBook(book.idx)
+        })
 
         card.append(author);
         card.append(title);
         card.append(pages);
         card.append(read);
+        card.append(delBook);
         // console.log(book.title)
         bookSection.append(card);
     })
@@ -66,3 +105,5 @@ btnSubmit.addEventListener("click", (event) => {
     const read = document.querySelector("#read").checked;
     if (author && title && pages) addBookToLibrary(author, title, pages, read);
 })
+
+displayBooks()
