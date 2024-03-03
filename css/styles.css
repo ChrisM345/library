@@ -40,26 +40,49 @@ button{
 
 .book-container{
     display: grid;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 150px;
+    margin-right: 150px;
     grid-template-columns: repeat(auto-fit, 300px);
     justify-content: center;
     justify-items: center;
     border: solid green;
-    gap: 25px;
+    gap: 50px;
 }
 .book{
     height: 250px;
-    width: 350px;
+    width: 300px;
     border: solid purple;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 
-.author{
+.readToggle{
+    padding: 5px;
+}
+.readSection{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5px;
+    align-items: center;
+}
+
+.delete-section{
+    margin-top: auto;
+    margin-bottom: 5px;
+    
+}
+
+.author, title{
     overflow-wrap: break-word;
 }
 
 .author, .title, .pages, .read{
     padding: 2px;
 }
-.title, .pages, .read{
+.title, .pages, .readSection{
     border-top: black solid;
 }
 

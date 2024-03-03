@@ -26,6 +26,12 @@ Book.prototype.toggleReadStatus = function(){
 myLibrary.push(new Book('test1test1test1test1test1test1test1', 'titleTest1', 450,'Yes'))
 myLibrary.push(new Book('test2', 'titleTest2', 450,'No'))
 myLibrary.push(new Book('test3', 'titleTest3', 450,'Yes'))
+myLibrary.push(new Book('test3', 'titleTest3', 450,'Yes'))
+myLibrary.push(new Book('test3', 'titleTest3', 450,'Yes'))
+myLibrary.push(new Book('test3', 'titleTest3', 450,'Yes'))
+myLibrary.push(new Book('test3', 'titleTest3', 450,'Yes'))
+myLibrary.push(new Book('test3', 'titleTest3', 450,'Yes'))
+myLibrary.push(new Book('test3', 'titleTest3', 450,'Yes'))
 
 
 // Create a new Book and add it to the library. The index for the new book is the length of the library
@@ -85,9 +91,13 @@ function displayBooks(){
         readSection.append(read);
         readSection.append(readToggle);
 
+        const delSection = document.createElement("div")
+        delSection.className = "delete-section"
         const delBook = document.createElement("button");
         delBook.className = "delete-book";
         delBook.innerText = `Remove Book`;
+
+        delSection.append(delBook)
 
         delBook.addEventListener("click", () => {
             removeBook(book.idx)
@@ -101,7 +111,7 @@ function displayBooks(){
         card.append(title);
         card.append(pages);
         card.append(readSection);
-        card.append(delBook);
+        card.append(delSection);
         bookSection.append(card);
     })
 }
